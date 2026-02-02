@@ -1,11 +1,11 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Calendar, Clock, Tag } from 'lucide-react';
+import { X, Calendar, Tag, Clock } from 'lucide-react';
 import { Badge } from '@/app/components/ui/badge';
 import "@blocknote/core/fonts/inter.css";
 import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/mantine";
 import "@blocknote/mantine/style.css";
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 
 interface ArticleModalProps {
     article: any;

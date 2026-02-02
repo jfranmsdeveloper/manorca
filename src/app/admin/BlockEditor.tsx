@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { BlockNoteEditor, PartialBlock } from "@blocknote/core";
+import { PartialBlock } from "@blocknote/core";
 import "@blocknote/core/fonts/inter.css";
 import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/mantine";
@@ -18,7 +18,7 @@ export default function BlockEditor() {
     const [title, setTitle] = useState('');
     const [coverImage, setCoverImage] = useState('');
     const [category, setCategory] = useState('Investigación');
-    const [initialContent, setInitialContent] = useState<PartialBlock[] | undefined>(undefined);
+    const [initialContent] = useState<PartialBlock[] | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(true);
 
     // Initialize editor
@@ -58,7 +58,7 @@ export default function BlockEditor() {
         for (const block of editor.document) {
             if (block.content) {
                 const text = Array.isArray(block.content)
-                    ? block.content.map(c => c.text).join(' ')
+                    ? block.content.map((c: any) => c.text || '').join(' ')
                     : (block.content as any).text || '';
 
                 if (text) {

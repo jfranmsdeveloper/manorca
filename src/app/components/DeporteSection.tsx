@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Trophy, Medal, Target, Users, Calendar, TrendingUp } from 'lucide-react';
+import { Target, Trophy, Users, Medal, Calendar } from 'lucide-react';
 import { Card } from '@/app/components/ui/card';
 import { Badge } from '@/app/components/ui/badge';
 import { Progress } from '@/app/components/ui/progress';

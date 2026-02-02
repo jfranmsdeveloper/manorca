@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Compass, GraduationCap, Briefcase, Users, TrendingUp, Lightbulb, ChevronDown } from 'lucide-react';
+import { Compass, GraduationCap, Briefcase, Lightbulb, Target, Users, TrendingUp } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/app/components/ui/accordion';
 import { Card } from '@/app/components/ui/card';
 import { Badge } from '@/app/components/ui/badge';
@@ -115,7 +115,7 @@ export function OrientacionSection() {
                 >
                   <AccordionTrigger className="px-8 py-6 hover:no-underline hover:bg-slate-50 transition-colors">
                     <div className="flex items-center gap-4 text-left">
-                      <div className={`w-14 h-14 bg-gradient-to-br ${topic.color} rounded-2xl flex items-center justify-center flex-shrink-0`}>
+                      <div className={`w - 14 h - 14 bg - gradient - to - br ${topic.color} rounded - 2xl flex items - center justify - center flex - shrink - 0`}>
                         <topic.icon className="w-7 h-7 text-white" />
                       </div>
                       <div className="flex-1">

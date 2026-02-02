@@ -1,7 +1,8 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/app/context/AuthContext';
 
-export function ProtectedRoute({ children }: { children: JSX.Element }) {
+import React from 'react';
+export function ProtectedRoute({ children }: { children: React.ReactNode }) {
     const { isAuthenticated } = useAuth();
     const location = useLocation();
 

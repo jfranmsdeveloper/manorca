@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Globe, Heart, Users, BookOpen, TreePine, Waves, Mountain, Building2 } from 'lucide-react';
+import { Globe, Heart, BookOpen, TreePine, Waves, Mountain, Building2 } from 'lucide-react';
 import { Card } from '@/app/components/ui/card';
 import { Badge } from '@/app/components/ui/badge';
 
@@ -236,10 +236,10 @@ export function UnescoSection() {
                   <div className="w-2/12 flex justify-center relative z-10">
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center ${item.status === 'completed'
-                          ? 'bg-[#0F172A]'
-                          : item.status === 'active'
-                            ? 'bg-blue-600 animate-pulse'
-                            : 'bg-slate-300'
+                        ? 'bg-[#0F172A]'
+                        : item.status === 'active'
+                          ? 'bg-blue-600 animate-pulse'
+                          : 'bg-slate-300'
                         }`}
                     >
                       {item.status === 'completed' && (
