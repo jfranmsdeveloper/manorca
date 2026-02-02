@@ -1,0 +1,300 @@
+@custom-variant DarkMode (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Azul Marino Theme - Light Mode */
+  --background: #FFFFFF;
+  --foreground: #0B1120;
+  /* Very dark navy text */
+
+  --card: #FFFFFF;
+  --card-foreground: #0B1120;
+
+  --popover: #FFFFFF;
+  --popover-foreground: #0B1120;
+
+  --primary: #0F172A;
+  /* Slate 900 - Deep Navy */
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #F8FAFC;
+  /* Slate 50 */
+  --secondary-foreground: #0F172A;
+
+  --muted: #F1F5F9;
+  /* Slate 100 */
+  --muted-foreground: #64748B;
+  /* Slate 500 */
+
+  --accent: #1E293B;
+  /* Slate 800 - Lighter Navy */
+  --accent-foreground: #FFFFFF;
+
+  --coral: #EF4444;
+  --coral-foreground: #FFFFFF;
+
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  --border: #E2E8F0;
+  /* Slate 200 */
+  --input: transparent;
+  --input-background: #F8FAFC;
+  --switch-background: #E2E8F0;
+
+  --ring: #0F172A;
+
+  /* Chart colors - Adapted to Navy theme */
+  --chart-1: #0F172A;
+  /* Navy */
+  --chart-2: #334155;
+  /* Slate 700 */
+  --chart-3: #475569;
+  /* Slate 600 */
+  --chart-4: #64748B;
+  /* Slate 500 */
+  --chart-5: #94A3B8;
+  /* Slate 400 */
+
+  --radius: 1rem;
+
+  --sidebar: #F8FAFC;
+  --sidebar-foreground: #0F172A;
+  --sidebar-primary: #0F172A;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E2E8F0;
+  --sidebar-accent-foreground: #0F172A;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #0F172A;
+
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+}
+
+.dark {
+  /* Azul Marino Theme - Dark Mode */
+  --background: #020617;
+  /* Slate 950 */
+  --foreground: #F8FAFC;
+  /* Slate 50 */
+
+  --card: #0F172A;
+  /* Slate 900 */
+  --card-foreground: #F8FAFC;
+
+  --popover: #0F172A;
+  --popover-foreground: #F8FAFC;
+
+  --primary: #FFFFFF;
+  --primary-foreground: #020617;
+
+  --secondary: #1E293B;
+  /* Slate 800 */
+  --secondary-foreground: #F8FAFC;
+
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  /* Slate 400 */
+
+  --accent: #1E293B;
+  --accent-foreground: #F8FAFC;
+
+  --destructive: #F87171;
+  --destructive-foreground: #FFFFFF;
+
+  --border: #1E293B;
+  --input: #1E293B;
+
+  --ring: #F8FAFC;
+
+  --chart-1: #38BDF8;
+  /* Sky 400 */
+  --chart-2: #818CF8;
+  /* Indigo 400 */
+  --chart-3: #F472B6;
+  /* Pink 400 */
+  --chart-4: #34D399;
+  /* Emerald 400 */
+  --chart-5: #FBBF24;
+  /* Amber 400 */
+
+  --sidebar: #020617;
+  --sidebar-foreground: #F8FAFC;
+  --sidebar-primary: #38BDF8;
+  --sidebar-primary-foreground: #020617;
+  --sidebar-accent: #1E293B;
+  --sidebar-accent-foreground: #F8FAFC;
+  --sidebar-border: #1E293B;
+  --sidebar-ring: #38BDF8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-coral: var(--coral);
+  --color-coral-foreground: var(--coral-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+
+  html {
+    font-size: var(--font-size);
+    scroll-behavior: smooth;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.4;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+}
+
+/* --- Advanced Aesthetics: Liquid Glass & Glow --- */
+
+/* 1. Liquid Glass Button Utility */
+.liquid-glass-btn {
+  @apply relative overflow-hidden transition-all duration-500 ease-out;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  /* Softer, wider shadow */
+}
+
+.liquid-glass-btn:hover {
+  background: rgba(15, 23, 42, 1);
+  /* Navy on Hover */
+  color: white;
+  border-color: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 0 15px rgba(15, 23, 42, 0.3), 0 0 30px rgba(15, 23, 42, 0.1);
+  transform: translateY(-2px);
+}
+
+.liquid-glass-btn::before {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+  background: linear-gradient(45deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%);
+  transform: translateX(-100%);
+}
+
+.liquid-glass-btn:hover::before {
+  @apply opacity-100;
+  transform: translateX(100%);
+  transition: transform 0.6s ease-in-out;
+}
+
+/* 2. Global Button Glow Hook */
+button:not(.no-glow):hover {
+  @apply ring-0;
+  background-image: linear-gradient(to bottom right, #0F172A, #1E293B);
+  color: white !important;
+  box-shadow: 0 0 20px rgba(15, 23, 42, 0.4);
+  border-color: transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Exclude specific active/primary buttons that already have styles */
+button.bg-\[\#0F172A\]:hover {
+  box-shadow: 0 0 25px rgba(15, 23, 42, 0.5);
+  filter: brightness(1.1);
+}

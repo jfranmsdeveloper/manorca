@@ -1,0 +1,148 @@
+[
+  {
+    "id": "8a033c4c-36e3-427a-8109-57af8e8b0390",
+    "title": "Publicación de Prueba 1",
+    "image": "http://localhost:3001/uploads/1770022761797-679095337.jpg",
+    "category": "Investigación",
+    "content": [
+      {
+        "id": "db7c949e-00b3-4887-9a2f-669ae36a7c8f",
+        "type": "paragraph",
+        "props": {
+          "backgroundColor": "default",
+          "textColor": "default",
+          "textAlignment": "left"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Hola mundo. ",
+            "styles": {}
+          }
+        ],
+        "children": []
+      },
+      {
+        "id": "b20779de-c2f4-4a72-9231-57027bb0d2bd",
+        "type": "paragraph",
+        "props": {
+          "backgroundColor": "default",
+          "textColor": "default",
+          "textAlignment": "left"
+        },
+        "content": [],
+        "children": []
+      }
+    ],
+    "date": "2026-02-02T08:59:28.762Z",
+    "status": "published",
+    "excerpt": "Hola mundo.  ",
+    "tags": [
+      "Nuevo"
+    ]
+  },
+  {
+    "id": "5ef79608-b014-4a0e-a93b-e044f168486b",
+    "title": "Titulo de la Publicación ",
+    "image": "http://localhost:3001/uploads/1770023905053-764599881.jpg",
+    "category": "Investigación",
+    "content": [
+      {
+        "id": "7f0874cc-1fed-4c39-bf71-9d43e120ce4d",
+        "type": "heading",
+        "props": {
+          "backgroundColor": "default",
+          "textColor": "default",
+          "textAlignment": "left",
+          "level": 1,
+          "isToggleable": false
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Titulo del Articulo ",
+            "styles": {}
+          }
+        ],
+        "children": []
+      },
+      {
+        "id": "5dbfef87-023c-44c3-88a7-022c058c8364",
+        "type": "heading",
+        "props": {
+          "backgroundColor": "default",
+          "textColor": "default",
+          "textAlignment": "left",
+          "level": 3,
+          "isToggleable": false
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Sección 1 ",
+            "styles": {}
+          }
+        ],
+        "children": []
+      },
+      {
+        "id": "775df75a-7738-4313-b205-4441160a9f7f",
+        "type": "paragraph",
+        "props": {
+          "backgroundColor": "default",
+          "textColor": "default",
+          "textAlignment": "left"
+        },
+        "content": [],
+        "children": []
+      },
+      {
+        "id": "9b00b776-2f2c-4cbb-9f3a-3ae2daf944d7",
+        "type": "paragraph",
+        "props": {
+          "backgroundColor": "default",
+          "textColor": "default",
+          "textAlignment": "left"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Hola esto es un artículo ",
+            "styles": {}
+          }
+        ],
+        "children": []
+      },
+      {
+        "id": "06c83f5a-7666-4bc6-9925-06543d264b3e",
+        "type": "image",
+        "props": {
+          "textAlignment": "left",
+          "backgroundColor": "default",
+          "name": "",
+          "url": "",
+          "caption": "",
+          "showPreview": true
+        },
+        "children": []
+      },
+      {
+        "id": "f2bc6987-76a3-4914-9b7c-c0934f30b217",
+        "type": "paragraph",
+        "props": {
+          "backgroundColor": "default",
+          "textColor": "default",
+          "textAlignment": "left"
+        },
+        "content": [],
+        "children": []
+      }
+    ],
+    "date": "2026-02-02T09:19:04.422Z",
+    "status": "published",
+    "excerpt": "Titulo del Articulo  Sección 1  Hola esto es un artículo  ",
+    "tags": [
+      "Nuevo"
+    ]
+  }
+]
