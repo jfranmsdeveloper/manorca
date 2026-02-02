@@ -104,7 +104,7 @@ export function Footer({ onNavigate }: FooterProps) {
                   <li key={link.label}>
                     {'section' in link ? (
                       <button
-                        onClick={() => onNavigate(link.section)}
+                        onClick={() => onNavigate(link.section as string)}
                         className="text-slate-400 hover:text-white transition-colors text-sm block"
                       >
                         {link.label}

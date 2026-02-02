@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Compass, GraduationCap, Briefcase, Lightbulb, Target, Users, TrendingUp } from 'lucide-react';
+import { Compass, GraduationCap, Briefcase, Lightbulb, Users, TrendingUp } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/app/components/ui/accordion';
 import { Card } from '@/app/components/ui/card';
 import { Badge } from '@/app/components/ui/badge';

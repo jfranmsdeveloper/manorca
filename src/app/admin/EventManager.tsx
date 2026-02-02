@@ -43,10 +43,7 @@ export default function EventManager() {
         loadEvents();
     }, []);
 
-    const saveEvents = (updatedEvents: Event[]) => {
-        setEvents(updatedEvents);
-        localStorage.setItem('manorca_events', JSON.stringify(updatedEvents));
-    };
+
 
     const handlePrevMonth = () => {
         setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
