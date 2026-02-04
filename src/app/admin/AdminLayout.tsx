@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { LayoutDashboard, PenTool, Settings, LogOut, Home, Calendar, Image, Book, BrainCircuit } from 'lucide-react';
+import { LayoutDashboard, PenTool, Settings, LogOut, Home, Calendar, Image, Book, Activity } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 
 export function AdminLayout() {
@@ -12,7 +12,7 @@ export function AdminLayout() {
         { label: 'Agenda', path: '/admin/events', icon: Calendar },
         { label: 'Galería', path: '/admin/gallery', icon: Image },
         { label: 'Lecturas', path: '/admin/books', icon: Book },
-        { label: 'Investigación AI', path: '/admin/research', icon: BrainCircuit },
+        { label: 'SEO Dashboard', path: '/admin/seo', icon: Activity },
         { label: 'Configuración', path: '/admin/settings', icon: Settings },
     ];
 

@@ -9,12 +9,17 @@ import { PostManager } from './app/admin/PostManager';
 import BlockEditor from './app/admin/BlockEditor';
 import EventManager from './app/admin/EventManager';
 import GalleryManager from './app/admin/GalleryManager';
-import ResearchAnalyst from './app/admin/ResearchAnalyst';
+import SeoDashboard from './app/admin/SeoDashboard';
 import LoginPage from './app/auth/LoginPage';
 import { AuthProvider } from './app/context/AuthContext';
 import { ProtectedRoute } from './app/auth/ProtectedRoute';
 import { Toaster } from '@/app/components/ui/sonner';
 import './styles/index.css';
+import { initGA, logPageView } from '@/lib/analytics';
+
+// Initialize GA
+initGA();
+logPageView(); // Log initial page load
 
 
 
@@ -61,7 +66,7 @@ createRoot(document.getElementById('root')!).render(
                 <Route path="events" element={<EventManager />} />
                 <Route path="gallery" element={<GalleryManager />} />
                 <Route path="books" element={<BookManager />} />
-                <Route path="research" element={<ResearchAnalyst />} />
+                <Route path="seo" element={<SeoDashboard />} />
                 <Route path="settings" element={<div className="p-8">Configuración</div>} />
               </Route>
             </Routes>
