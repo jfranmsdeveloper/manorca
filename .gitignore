@@ -16,3 +16,7 @@ yarn-error.log*
 
 # OS
 Thumbs.db
+
+# Data Persistence
+data/
+public/uploads/

@@ -1,0 +1,37 @@
+# Security Options
+Options -Indexes
+ServerSignature Off
+
+# Protection Headers
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    # Basic CSP - Adjust if external resources (fonts, analytics) are blocked
+    Header set Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data:; img-src 'self' https: data: blob:;"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Block access to data directory (JSON files)
+  RewriteRule ^data/.* - [F,L]
+  
+  # Block access to hidden files (.git, .env, etc)
+  RewriteRule (^\.|/\.) - [F,L]
+
+  # 1. API Calls: Allow direct access to PHP files
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^api/.*\.php$ - [L]
+
+  # 2. Uploads and existing files: Let them pass
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 3. SPA Catch-all: Route everything else to index.html
+  RewriteRule ^ index.html [L]
+</IfModule>

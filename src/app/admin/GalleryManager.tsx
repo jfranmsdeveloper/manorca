@@ -7,6 +7,7 @@ import { Input } from '@/app/components/ui/input';
 import { Label } from '@/app/components/ui/label';
 import { Card } from '@/app/components/ui/card';
 import { toast } from 'sonner';
+import ImageEditor from './ImageEditor';
 
 export default function GalleryManager() {
     const [images, setImages] = useState<any[]>([]);
@@ -14,6 +15,7 @@ export default function GalleryManager() {
     const [newImage, setNewImage] = useState({
         title: '',
         category: 'Eventos',
+        section: 'general',
         image: '',
         size: 'medium'
     });
@@ -31,15 +33,25 @@ export default function GalleryManager() {
         }
     };
 
-    const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const [editingFile, setEditingFile] = useState<File | null>(null);
+
+    const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-        if (!file) return;
+        if (file) {
+            setEditingFile(file);
+            // Reset input value to allow selecting same file again
+            e.target.value = '';
+        }
+    };
+
+    const handleEditorSave = async (processedFile: File) => {
+        setEditingFile(null); // Close editor
 
         try {
             setIsUploading(true);
-            const url = await api.uploadImage(file);
-            setNewImage({ ...newImage, image: url });
-            toast.success('Imagen subida correctamente');
+            const url = await api.uploadImage(processedFile);
+            setNewImage(prev => ({ ...prev, image: url }));
+            toast.success('Imagen editada y subida correctamente');
         } catch (error) {
             toast.error('Error al subir la imagen');
         } finally {
@@ -56,7 +68,7 @@ export default function GalleryManager() {
         try {
             await api.saveGalleryImage(newImage);
             loadGallery();
-            setNewImage({ title: '', category: 'Eventos', image: '', size: 'medium' });
+            setNewImage({ title: '', category: 'Eventos', section: 'general', image: '', size: 'medium' });
             toast.success('Imagen añadida a la galería');
         } catch (error) {
             toast.error('Error al guardar la imagen');
@@ -100,6 +112,22 @@ export default function GalleryManager() {
                         </div>
 
                         <div>
+                            <Label>Sección de la Web (Opcional)</Label>
+                            <select
+                                className="w-full mt-1 p-2 border border-slate-200 rounded-lg bg-white"
+                                value={newImage.section}
+                                onChange={(e) => setNewImage({ ...newImage, section: e.target.value })}
+                            >
+                                <option value="general">Galería General</option>
+                                <option value="hero">Inicio (Cabecera Principal)</option>
+                                <option value="sobre-mi">Sobre Mí</option>
+                                <option value="publicaciones-header">Publicaciones (Cabecera)</option>
+                                <option value="contacto">Contacto</option>
+                            </select>
+                            <p className="text-xs text-slate-500 mt-1">Si seleccionas una sección específica, esta imagen sustituirá a la predeterminada en esa parte de la web.</p>
+                        </div>
+
+                        <div>
                             <Label>Categoría</Label>
                             <select
                                 className="w-full mt-1 p-2 border border-slate-200 rounded-lg bg-white"
@@ -134,15 +162,20 @@ export default function GalleryManager() {
                                 <input
                                     type="file"
                                     accept="image/*"
-                                    onChange={handleFileUpload}
+                                    onChange={handleFileSelect}
                                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                                 />
                                 {newImage.image ? (
-                                    <img src={newImage.image} alt="Preview" className="h-32 mx-auto object-cover rounded-lg shadow-md" />
+                                    <div className="group relative">
+                                        <img src={newImage.image} alt="Preview" className="h-32 mx-auto object-cover rounded-lg shadow-md" />
+                                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium rounded-lg">
+                                            Click para cambiar
+                                        </div>
+                                    </div>
                                 ) : (
                                     <div className="text-slate-400">
                                         <Upload className="w-8 h-8 mx-auto mb-2" />
-                                        <span className="text-sm">{isUploading ? 'Subiendo...' : 'Click para subir imagen'}</span>
+                                        <span className="text-sm">{isUploading ? 'Subiendo...' : 'Click para editar y subir'}</span>
                                     </div>
                                 )}
                             </div>
@@ -153,6 +186,15 @@ export default function GalleryManager() {
                         </Button>
                     </div>
                 </Card>
+
+                {/* Editor Modal */}
+                {editingFile && (
+                    <ImageEditor
+                        file={editingFile}
+                        onSave={handleEditorSave}
+                        onCancel={() => setEditingFile(null)}
+                    />
+                )}
 
                 {/* Gallery Grid */}
                 <div className="lg:col-span-2">
@@ -176,6 +218,11 @@ export default function GalleryManager() {
                                 </div>
                                 <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
                                     <p className="text-white text-xs font-medium truncate">{item.title}</p>
+                                    {item.section && item.section !== 'general' && (
+                                        <span className="inline-block mt-1 px-1.5 py-0.5 bg-blue-500/80 text-[10px] text-white rounded">
+                                            {item.section}
+                                        </span>
+                                    )}
                                 </div>
                             </motion.div>
                         ))}

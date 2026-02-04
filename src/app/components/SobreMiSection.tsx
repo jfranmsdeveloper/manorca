@@ -2,10 +2,11 @@ import { useState } from 'react';
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { motion } from 'motion/react';
-import { Award, BookOpen, Users, Globe, GraduationCap, Target, Heart, Lightbulb } from 'lucide-react';
-import { Badge } from '@/app/components/ui/badge';
-import { Card } from '@/app/components/ui/card';
+import { Users, Target, Heart, Lightbulb } from 'lucide-react';
+import { TimelineSection } from './TimelineSection';
+import { EditableImage } from '@/app/components/admin/EditableImage';
 
+// Helper image imports (from Unsplash or assets)
 const manuelImage3 = 'https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
 const manuelImage4 = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
 const manuelImage5 = 'https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
@@ -47,32 +48,7 @@ export function SobreMiSection() {
     },
   ];
 
-  const logros = [
-    {
-      icon: Award,
-      title: 'Premio UNESCO 2025',
-      description: 'Reconocimiento a la excelencia en educación global',
-      year: '2025',
-    },
-    {
-      icon: BookOpen,
-      title: '20+ Publicaciones',
-      description: 'Artículos e investigaciones en revistas indexadas',
-      year: '2015-2026',
-    },
-    {
-      icon: GraduationCap,
-      title: 'Doctor en Educación',
-      description: 'Universidad de Granada - Mención Internacional',
-      year: '2010',
-    },
-    {
-      icon: Globe,
-      title: 'Proyectos Internacionales',
-      description: 'Colaboración con instituciones de 15 países',
-      year: '2012-2026',
-    },
-  ];
+
 
   const expertiseAreas = [
     'Metodologías Educativas Innovadoras',
@@ -86,7 +62,7 @@ export function SobreMiSection() {
   ];
 
   return (
-    <section id="sobre-mi" className="py-20 lg:py-32 bg-white relative overflow-hidden">
+    <section id="sobre-mi" className="py-20 lg:py-32 bg-background relative overflow-hidden transition-colors duration-300">
       {/* Subtle animated background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-20 right-20 w-96 h-96 bg-slate-100 rounded-full blur-3xl" />
@@ -108,11 +84,11 @@ export function SobreMiSection() {
             viewport={{ once: true }}
             className="inline-block mb-4"
           >
-            <div className="px-6 py-2 text-sm bg-slate-100 rounded-full border border-slate-200 text-slate-700 font-medium">
+            <div className="px-6 py-2 text-sm bg-muted rounded-full border border-border text-muted-foreground font-medium">
               Sobre Mí
             </div>
           </motion.div>
-          <h2 className="text-5xl lg:text-6xl font-bold text-[#0F172A] mb-6">
+          <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Conoce a Manuel Ortega Caballero
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
@@ -131,7 +107,7 @@ export function SobreMiSection() {
             className="space-y-6"
           >
             <div>
-              <h3 className="text-3xl font-bold text-[#0F172A] mb-4">Mi Historia</h3>
+              <h3 className="text-3xl font-bold text-foreground mb-4">Mi Historia</h3>
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
                   Doctor en Ciencias de la Educación por la Universidad de Granada, con más de 15 años
@@ -154,13 +130,13 @@ export function SobreMiSection() {
 
             {/* Expertise Areas */}
             <div>
-              <h4 className="text-2xl font-bold text-[#0F172A] mb-4">Áreas de Expertise</h4>
+              <h4 className="text-2xl font-bold text-foreground mb-4">Áreas de Expertise</h4>
               <div className="flex flex-wrap gap-2">
                 {expertiseAreas.map((area) => (
                   <motion.div
                     key={area}
                     whileHover={{ scale: 1.05 }}
-                    className="px-4 py-2 bg-slate-100 border border-slate-200 rounded-full text-sm text-[#0F172A] font-medium hover:bg-[#0F172A] hover:text-white transition-colors"
+                    className="px-4 py-2 bg-muted border border-border rounded-full text-sm text-foreground font-medium hover:bg-primary hover:text-primary-foreground transition-colors"
                   >
                     {area}
                   </motion.div>
@@ -181,18 +157,15 @@ export function SobreMiSection() {
             <motion.div
               whileHover={{ scale: 1.02 }}
               className="relative rounded-3xl overflow-hidden shadow-2xl cursor-pointer group"
-              onClick={() => { setPhotoIndex(0); setLightboxOpen(true); }}
             >
-              <img
-                src={manuelImage3}
+              <EditableImage
+                section="sobre-mi-main"
+                defaultSrc={manuelImage3}
                 alt="Dr. Manuel Ortega Caballero en su despacho"
                 className="w-full h-auto object-cover"
+                onClick={() => { setPhotoIndex(0); setLightboxOpen(true); }}
+                aspectRatio={4 / 5}
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 text-white font-medium bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm transition-opacity">
-                  Ver imagen
-                </div>
-              </div>
             </motion.div>
 
             {/* Two Column Grid */}
@@ -200,26 +173,28 @@ export function SobreMiSection() {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="relative rounded-2xl overflow-hidden shadow-xl cursor-pointer group"
-                onClick={() => { setPhotoIndex(1); setLightboxOpen(true); }}
               >
-                <img
-                  src={manuelImage4}
+                <EditableImage
+                  section="sobre-mi-grid-1"
+                  defaultSrc={manuelImage4}
                   alt="Manuel Ortega Caballero en conferencia"
                   className="w-full h-full object-cover"
+                  onClick={() => { setPhotoIndex(1); setLightboxOpen(true); }}
+                  aspectRatio={4 / 3}
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="relative rounded-2xl overflow-hidden shadow-xl cursor-pointer group"
-                onClick={() => { setPhotoIndex(2); setLightboxOpen(true); }}
               >
-                <img
-                  src={manuelImage5}
+                <EditableImage
+                  section="sobre-mi-grid-2"
+                  defaultSrc={manuelImage5}
                   alt="Manuel Ortega Caballero enseñando"
                   className="w-full h-full object-cover"
+                  onClick={() => { setPhotoIndex(2); setLightboxOpen(true); }}
+                  aspectRatio={4 / 3}
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
               </motion.div>
             </div>
           </motion.div>
@@ -242,7 +217,7 @@ export function SobreMiSection() {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <h3 className="text-4xl font-bold text-[#0F172A] text-center mb-12">Mis Valores</h3>
+          <h3 className="text-4xl font-bold text-foreground text-center mb-12">Mis Valores</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {valores.map((valor, index) => (
               <motion.div
@@ -253,14 +228,14 @@ export function SobreMiSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -8 }}
               >
-                <div className="relative h-full p-6 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-900/5 transition-all duration-300 group">
+                <div className="relative h-full p-6 bg-card rounded-3xl border border-border shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group">
                   <div className="relative z-10">
                     <div
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform bg-white border border-slate-200"
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform bg-background border border-border"
                     >
-                      <valor.icon className="w-8 h-8 text-[#0F172A]" />
+                      <valor.icon className="w-8 h-8 text-foreground" />
                     </div>
-                    <h4 className="text-xl font-bold text-[#0F172A] mb-3">{valor.title}</h4>
+                    <h4 className="text-xl font-bold text-foreground mb-3">{valor.title}</h4>
                     <p className="text-slate-600 leading-relaxed">{valor.description}</p>
                   </div>
                 </div>
@@ -269,45 +244,18 @@ export function SobreMiSection() {
           </div>
         </motion.div>
 
-        {/* Achievements Timeline */}
+        {/* Achievements Timeline - Now using Timeline Component */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-4xl font-bold text-[#0F172A] text-center mb-12">
+          <h3 className="text-4xl font-bold text-foreground text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80 dark:text-gray-100">
             Trayectoria y Logros
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            {logros.map((logro, index) => (
-              <motion.div
-                key={logro.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-              >
-                <Card className="relative p-6 h-full bg-white border border-slate-200 hover:border-[#0F172A] transition-all group overflow-hidden">
-                  {/* Year Badge */}
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-[#0F172A] text-white">
-                      {logro.year}
-                    </Badge>
-                  </div>
-
-                  <div className="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <logro.icon className="w-7 h-7 text-[#0F172A]" />
-                  </div>
-                  <h4 className="text-xl font-bold text-[#0F172A] mb-2 pr-16">{logro.title}</h4>
-                  <p className="text-slate-600 text-sm leading-relaxed">{logro.description}</p>
-
-                  {/* Decorative element */}
-                  <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-slate-50 rounded-full blur-xl" />
-                </Card>
-              </motion.div>
-            ))}
+          <div className="max-w-4xl mx-auto">
+            <TimelineSection />
           </div>
         </motion.div>
 
@@ -339,7 +287,7 @@ export function SobreMiSection() {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="px-8 py-4 bg-white text-[#0F172A] rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all relative z-10"
+              className="px-8 py-4 bg-background text-foreground rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all relative z-10"
             >
               Ponte en Contacto
             </motion.button>

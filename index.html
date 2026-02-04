@@ -5,10 +5,166 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rediseño sitio web Ortega Caballero</title>
+  <title>Manuel Ortega Caballero | Psicopedagogo, Orientador y Coach</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #050505;
+      color: white;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .initial-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
+      z-index: 2147483647 !important;
+      opacity: 1;
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
+    }
+
+    .initial-loader.fade-out {
+      opacity: 0;
+      transform: scale(0.95);
+      filter: blur(20px);
+      pointer-events: none;
+    }
+
+    /* Morphing Liquid Background Blob */
+    .liquid-blob {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(180deg, rgba(168, 85, 247, 0.4) 0%, rgba(56, 189, 248, 0.4) 100%);
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      animation: float 6s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    /* Glass Container */
+    .glass-loader {
+      position: relative;
+      z-index: 10;
+      width: 120px;
+      height: 120px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    /* Inner Light */
+    .glass-loader::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(45deg);
+      animation: shine 3s infinite;
+    }
+
+    .brand-text {
+      position: relative;
+      z-index: 10;
+      margin-top: 40px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      letter-spacing: 0.3em;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      animation: fadeIn 2s ease-out;
+    }
+
+    .brand-initials {
+      font-size: 2.5rem;
+      font-weight: 200;
+      color: white;
+      letter-spacing: -2px;
+      font-family: 'Times New Roman', serif;
+      /* Or custom font if available */
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(0, -20px) scale(1.1);
+      }
+    }
+
+    @keyframes breathe {
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 35px 60px -12px rgba(168, 85, 247, 0.2);
+      }
+    }
+
+    @keyframes shine {
+      0% {
+        top: -150%;
+        left: -150%;
+      }
+
+      100% {
+        top: 150%;
+        left: 150%;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div id="initial-loader" class="initial-loader">
+    <div class="liquid-blob"></div>
+    <div class="glass-loader">
+      <span class="brand-initials">MO</span>
+    </div>
+    <p class="brand-text">Ortega Caballero</p>
+  </div>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

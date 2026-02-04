@@ -5,5 +5,19 @@
     "image": "http://localhost:3001/uploads/1770025561968-117209833.jpg",
     "size": "large",
     "id": "1770025563551"
+  },
+  {
+    "title": "ooooo",
+    "category": "Eventos",
+    "image": "http://localhost:3001/uploads/1770058576545-228416924.jpg",
+    "size": "medium",
+    "id": "1770058585868"
+  },
+  {
+    "title": "Foto mia ",
+    "category": "Investigación",
+    "image": "http://localhost:3001/uploads/1770059630342-749892897.jpg",
+    "size": "large",
+    "id": "1770059631601"
   }
 ]

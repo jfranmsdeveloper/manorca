@@ -90,7 +90,7 @@ export function UniversidadSection() {
   }, []);
 
   return (
-    <section id="universidad" className="py-28 bg-white">
+    <section id="universidad" className="py-28 bg-background transition-colors duration-300">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -102,7 +102,7 @@ export function UniversidadSection() {
           <span className="inline-block px-6 py-2 bg-[#0F172A]/10 border border-[#0F172A]/20 rounded-full text-[#0F172A] text-sm mb-4">
             Contenido Académico
           </span>
-          <h2 className="text-5xl lg:text-6xl font-bold text-[#0F172A] mb-6">
+          <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Universidad
           </h2>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto">
@@ -111,7 +111,7 @@ export function UniversidadSection() {
         </motion.div>
 
         <Tabs defaultValue="propias" className="max-w-7xl mx-auto">
-          <TabsList className="grid w-full grid-cols-3 mb-12 bg-slate-100 p-2 rounded-2xl">
+          <TabsList className="grid w-full grid-cols-3 mb-12 bg-muted p-2 rounded-2xl">
             <TabsTrigger value="propias" className="rounded-xl data-[state=active]:bg-[#0F172A] data-[state=active]:text-white data-[state=active]:shadow-lg transition-all">
               Publicaciones Propias
             </TabsTrigger>
@@ -134,7 +134,7 @@ export function UniversidadSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <Card className="group overflow-hidden rounded-3xl border border-slate-200 shadow-xl hover:shadow-2xl hover:border-[#0F172A] transition-all duration-300">
+                  <Card className="group overflow-hidden rounded-3xl border border-border bg-card shadow-xl hover:shadow-2xl hover:border-primary transition-all duration-300">
                     <div className="relative overflow-hidden aspect-[16/10]">
                       <img
                         src={pub.image}
@@ -149,7 +149,7 @@ export function UniversidadSection() {
 
                     <div className="p-6">
                       <span className="text-sm text-slate-500 mb-2 block">{pub.date}</span>
-                      <h3 className="text-xl font-bold text-[#0F172A] mb-3 group-hover:text-blue-700 transition-colors">
+                      <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                         {pub.title}
                       </h3>
                       <p className="text-slate-600 mb-4 leading-relaxed">
@@ -195,14 +195,14 @@ export function UniversidadSection() {
                   whileHover={{ scale: 1.05, rotateY: 5 }}
                   style={{ transformStyle: 'preserve-3d' }}
                 >
-                  <Card className="p-6 rounded-3xl border border-slate-100 shadow-xl hover:shadow-2xl transition-all bg-gradient-to-br from-white to-slate-50 hover:border-[#0F172A]">
+                  <Card className="p-6 rounded-3xl border border-border shadow-xl hover:shadow-2xl transition-all bg-card/50 hover:bg-card hover:border-primary">
                     <div className="w-16 h-16 bg-[#0F172A] rounded-2xl flex items-center justify-center mb-4">
                       <BookOpen className="w-8 h-8 text-white" />
                     </div>
                     <Badge className="bg-[#0F172A]/10 text-[#0F172A] border-none mb-3">
                       {pub.category}
                     </Badge>
-                    <h3 className="text-lg font-bold text-[#0F172A] mb-2">{pub.title}</h3>
+                    <h3 className="text-lg font-bold text-foreground mb-2">{pub.title}</h3>
                     <p className="text-sm text-slate-500 mb-4">{pub.author}</p>
                     <div className="flex items-center gap-2 mb-4">
                       <div className="flex gap-0.5">
@@ -260,7 +260,7 @@ export function UniversidadSection() {
 
             <div className="mt-8 text-center">
               <Link to="/gallery">
-                <Button className="bg-white border border-slate-200 text-[#0F172A] hover:bg-slate-50 rounded-xl px-8 py-6 text-lg font-medium shadow-sm hover:shadow-md transition-all group">
+                <Button className="bg-card border border-border text-foreground hover:bg-muted rounded-xl px-8 py-6 text-lg font-medium shadow-sm hover:shadow-md transition-all group">
                   Explorar Galería Completa
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>

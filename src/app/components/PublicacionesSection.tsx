@@ -14,8 +14,8 @@ export function PublicacionesSection() {
   const [publicaciones, setPublicaciones] = useState<any[]>([]);
 
   // Premium Glass Button Styles
-  const glassButtonActive = "bg-[#0F172A] text-white shadow-[0_4px_20px_rgba(15,23,42,0.3)] border border-[#0F172A]/50 backdrop-blur-md";
-  const glassButtonInactive = "bg-white/60 backdrop-blur-md border border-white/60 text-slate-600 shadow-sm hover:shadow-md hover:bg-white/90 hover:scale-105";
+  const glassButtonActive = "bg-primary text-primary-foreground shadow-[0_4px_20px_rgba(15,23,42,0.3)] border border-primary/50 backdrop-blur-md";
+  const glassButtonInactive = "bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border border-white/60 dark:border-slate-700/60 text-muted-foreground shadow-sm hover:shadow-md hover:bg-white/90 dark:hover:bg-slate-800/90 hover:scale-105";
 
   const categories = [
     { id: 'todas', label: 'Todas', icon: BookOpen },
@@ -141,7 +141,7 @@ export function PublicacionesSection() {
   });
 
   return (
-    <section id="publicaciones" className="py-20 lg:py-32 bg-slate-50 relative overflow-hidden">
+    <section id="publicaciones" className="py-20 lg:py-32 bg-muted/30 dark:bg-transparent relative overflow-hidden transition-colors duration-300">
       {/* Subtle Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-20 right-20 w-96 h-96 bg-blue-100 rounded-full blur-3xl" />
@@ -167,7 +167,7 @@ export function PublicacionesSection() {
               Contenido Original
             </div>
           </motion.div>
-          <h2 className="text-5xl lg:text-6xl font-bold text-[#0F172A] mb-6">
+          <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Publicaciones & Artículos
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
@@ -191,7 +191,7 @@ export function PublicacionesSection() {
               placeholder="Buscar publicaciones por título, contenido o etiquetas..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-12 pr-4 py-6 text-lg rounded-2xl border-2 border-slate-200 focus:border-[#0F172A] bg-white transition-colors"
+              className="pl-12 pr-4 py-6 text-lg rounded-2xl border-2 border-border focus:border-primary bg-background transition-colors"
             />
           </div>
 
@@ -233,7 +233,7 @@ export function PublicacionesSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="group overflow-hidden rounded-3xl border border-slate-200 hover:border-[#0F172A] transition-all duration-300 hover:shadow-2xl hover:shadow-slate-900/10 h-full flex flex-col bg-white">
+                <Card className="group overflow-hidden rounded-3xl border border-border hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 h-full flex flex-col bg-card">
                   {/* Image */}
                   <div className="relative h-56 overflow-hidden">
                     <motion.img
@@ -247,17 +247,17 @@ export function PublicacionesSection() {
 
                     {/* Category Badge */}
                     <div className="absolute top-4 left-4">
-                      <Badge className="bg-[#0F172A]/90 backdrop-blur-sm text-white border-0">
+                      <Badge className="bg-primary/90 backdrop-blur-sm text-primary-foreground border-0">
                         {categories.find((c) => c.id === pub.category)?.label || pub.category}
                       </Badge>
                     </div>
 
                     {/* Read More Icon */}
                     <motion.div
-                      className="absolute bottom-4 right-4 w-12 h-12 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-xl"
+                      className="absolute bottom-4 right-4 w-12 h-12 bg-card rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-xl"
                       whileHover={{ scale: 1.1 }}
                     >
-                      <ExternalLink className="w-5 h-5 text-[#0F172A]" />
+                      <ExternalLink className="w-5 h-5 text-foreground" />
                     </motion.div>
                   </div>
 
@@ -280,7 +280,7 @@ export function PublicacionesSection() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-[#0F172A] mb-3 group-hover:text-blue-600 transition-colors leading-tight">
+                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-600 transition-colors leading-tight">
                       {pub.title}
                     </h3>
 
@@ -295,7 +295,7 @@ export function PublicacionesSection() {
                         <Badge
                           key={tag}
                           variant="secondary"
-                          className="bg-slate-100 text-slate-700 hover:bg-[#0F172A] hover:text-white transition-colors"
+                          className="bg-muted text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
                         >
                           <Tag className="w-3 h-3 mr-1" />
                           {tag}
@@ -307,7 +307,7 @@ export function PublicacionesSection() {
                     <Button
                       variant="ghost"
                       onClick={() => setSelectedArticle(pub)}
-                      className="w-full group-hover:bg-[#0F172A] group-hover:text-white transition-all mt-auto"
+                      className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all mt-auto"
                     >
                       Leer más
                       <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

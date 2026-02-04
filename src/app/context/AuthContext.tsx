@@ -2,14 +2,17 @@ import { createContext, useContext, useState, useEffect, ReactNode } from 'react
 
 interface AuthContextType {
     isAuthenticated: boolean;
+    isEditMode: boolean;
     login: (password: string, username: string) => boolean;
     logout: () => void;
+    toggleEditMode: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isEditMode, setIsEditMode] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -34,6 +37,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const logout = () => {
         sessionStorage.removeItem('manorca_auth');
         setIsAuthenticated(false);
+        setIsEditMode(false); // Disable edit mode on logout
+    };
+
+    const toggleEditMode = () => {
+        setIsEditMode(prev => !prev);
     };
 
     if (isLoading) {
@@ -41,7 +49,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, isEditMode, login, logout, toggleEditMode }}>
             {children}
         </AuthContext.Provider>
     );

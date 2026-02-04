@@ -72,7 +72,7 @@ export function DeporteSection() {
   ];
 
   return (
-    <section id="deporte" className="py-28 bg-white">
+    <section id="deporte" className="py-28 bg-background transition-colors duration-300">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -81,10 +81,10 @@ export function DeporteSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-6 py-2 bg-[#0F172A]/10 border border-[#0F172A]/20 rounded-full text-[#0F172A] text-sm mb-4">
+          <span className="inline-block px-6 py-2 bg-muted rounded-full border border-border text-muted-foreground text-sm mb-4">
             Logros y Actividades
           </span>
-          <h2 className="text-5xl lg:text-6xl font-bold text-[#0F172A] mb-6">
+          <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Deporte
           </h2>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto">
@@ -112,7 +112,7 @@ export function DeporteSection() {
             <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
               <div className="max-w-3xl">
                 <div className="flex items-center gap-4 mb-4">
-                  <Badge className="bg-[#0F172A] text-white border-2 border-white/20">
+                  <Badge className="bg-primary text-primary-foreground border-2 border-primary-foreground/20">
                     <Calendar className="w-3 h-3 mr-1" />
                     {featuredNews.date}
                   </Badge>
@@ -131,7 +131,7 @@ export function DeporteSection() {
                 </p>
                 <motion.button
                   whileHover={{ x: 10 }}
-                  className="px-8 py-4 bg-white text-[#0F172A] rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all"
+                  className="px-8 py-4 bg-background text-foreground rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all"
                 >
                   Leer noticia completa →
                 </motion.button>
@@ -183,7 +183,7 @@ export function DeporteSection() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/80 to-transparent" />
-                  <Badge className="absolute top-4 left-4 bg-[#0F172A] text-white border-none">
+                  <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground border-none">
                     {item.category}
                   </Badge>
                   <div className="absolute bottom-4 left-4 right-4">
@@ -194,10 +194,10 @@ export function DeporteSection() {
                 </div>
                 <div className="p-6">
                   <p className="text-sm text-slate-500 mb-3">{item.date}</p>
-                  <p className="text-[#0F172A] leading-relaxed">{item.excerpt}</p>
+                  <p className="text-foreground leading-relaxed">{item.excerpt}</p>
                   <motion.button
                     whileHover={{ x: 5 }}
-                    className="mt-4 text-[#0F172A] hover:text-blue-700 font-semibold flex items-center gap-2"
+                    className="mt-4 text-foreground hover:text-blue-700 font-semibold flex items-center gap-2"
                   >
                     Leer más
                     <motion.span>→</motion.span>
@@ -216,7 +216,7 @@ export function DeporteSection() {
           transition={{ delay: 0.5 }}
           className="mt-16 text-center"
         >
-          <Card className="max-w-4xl mx-auto p-12 rounded-3xl border-none shadow-2xl bg-[#0F172A] text-white overflow-hidden relative">
+          <Card className="max-w-4xl mx-auto p-12 rounded-3xl border-none shadow-2xl bg-card text-card-foreground overflow-hidden relative">
             {/* Texture */}
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" />
 
@@ -225,13 +225,13 @@ export function DeporteSection() {
               <h3 className="text-3xl font-bold mb-4">
                 Únete a Nuestros Equipos Deportivos
               </h3>
-              <p className="text-lg mb-8 text-slate-300 max-w-2xl mx-auto">
+              <p className="text-lg mb-8 text-muted-foreground max-w-2xl mx-auto">
                 Descubre tu potencial atlético y forma parte de nuestra comunidad deportiva
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-[#0F172A] rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all"
+                className="px-8 py-4 bg-primary text-primary-foreground rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all"
               >
                 Información e Inscripciones
               </motion.button>

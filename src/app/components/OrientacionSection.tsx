@@ -72,7 +72,7 @@ export function OrientacionSection() {
   ];
 
   return (
-    <section id="orientacion" className="py-28 bg-[#F8FAFC]">
+    <section id="orientacion" className="py-28 bg-background transition-colors duration-300">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -81,10 +81,10 @@ export function OrientacionSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-6 py-2 bg-[#0F172A]/10 border border-[#0F172A]/20 rounded-full text-[#0F172A] text-sm mb-4">
+          <span className="inline-block px-6 py-2 bg-muted rounded-full border border-border text-muted-foreground text-sm mb-4">
             Recursos de Apoyo
           </span>
-          <h2 className="text-5xl lg:text-6xl font-bold text-[#0F172A] mb-6">
+          <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Orientación
           </h2>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto">
@@ -111,15 +111,15 @@ export function OrientacionSection() {
               >
                 <AccordionItem
                   value={topic.id}
-                  className="bg-white rounded-3xl border border-slate-100 shadow-lg overflow-hidden"
+                  className="bg-card rounded-3xl border border-border shadow-lg overflow-hidden"
                 >
-                  <AccordionTrigger className="px-8 py-6 hover:no-underline hover:bg-slate-50 transition-colors">
+                  <AccordionTrigger className="px-8 py-6 hover:no-underline hover:bg-muted transition-colors">
                     <div className="flex items-center gap-4 text-left">
                       <div className={`w - 14 h - 14 bg - gradient - to - br ${topic.color} rounded - 2xl flex items - center justify - center flex - shrink - 0`}>
                         <topic.icon className="w-7 h-7 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-[#0F172A]">{topic.title}</h3>
+                        <h3 className="text-xl font-bold text-foreground">{topic.title}</h3>
                       </div>
                     </div>
                   </AccordionTrigger>
@@ -131,7 +131,7 @@ export function OrientacionSection() {
                       {topic.tags.map((tag) => (
                         <Badge
                           key={tag}
-                          className="bg-slate-100 text-[#0F172A] border-none hover:bg-[#0F172A] hover:text-white transition-colors"
+                          className="bg-muted text-foreground border-none hover:bg-primary hover:text-primary-foreground transition-colors"
                         >
                           {tag}
                         </Badge>
@@ -139,7 +139,7 @@ export function OrientacionSection() {
                     </div>
                     <motion.button
                       whileHover={{ x: 5 }}
-                      className="mt-4 text-[#0F172A] hover:text-blue-700 font-semibold flex items-center gap-2"
+                      className="mt-4 text-foreground hover:text-blue-700 font-semibold flex items-center gap-2"
                     >
                       Explorar recursos
                       <motion.span className="inline-block">→</motion.span>
@@ -158,7 +158,7 @@ export function OrientacionSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          <h3 className="text-3xl font-bold text-[#0F172A] text-center mb-10">
+          <h3 className="text-3xl font-bold text-foreground text-center mb-10">
             Recursos Destacados
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
@@ -171,14 +171,14 @@ export function OrientacionSection() {
                 transition={{ delay: 0.5 + index * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <Card className="p-6 rounded-3xl border border-slate-100 shadow-lg hover:shadow-2xl transition-all bg-white hover:border-[#0F172A]">
-                  <div className="w-12 h-12 bg-[#0F172A] rounded-xl flex items-center justify-center mb-4">
+                <Card className="p-6 rounded-3xl border border-border shadow-lg hover:shadow-2xl transition-all bg-card hover:border-primary">
+                  <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
                     <Compass className="w-6 h-6 text-white" />
                   </div>
-                  <Badge className="bg-slate-100 text-[#0F172A] border-none mb-3">
+                  <Badge className="bg-muted text-foreground border-none mb-3">
                     {resource.category}
                   </Badge>
-                  <h4 className="text-lg font-bold text-[#0F172A] mb-2">
+                  <h4 className="text-lg font-bold text-foreground mb-2">
                     {resource.title}
                   </h4>
                   <p className="text-sm text-slate-500">
@@ -198,17 +198,17 @@ export function OrientacionSection() {
           transition={{ delay: 0.7 }}
           className="mt-16 text-center"
         >
-          <Card className="max-w-3xl mx-auto p-12 rounded-3xl border-none shadow-2xl bg-[#0F172A] text-white">
+          <Card className="max-w-3xl mx-auto p-12 rounded-3xl border-none shadow-2xl bg-card text-card-foreground">
             <h3 className="text-3xl font-bold mb-4">
               ¿Necesitas orientación personalizada?
             </h3>
-            <p className="text-lg mb-8 text-slate-300">
+            <p className="text-lg mb-8 text-muted-foreground">
               Agenda una sesión de consultoría académica o profesional con nuestro equipo
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white text-[#0F172A] rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all"
+              className="px-8 py-4 bg-primary text-primary-foreground rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all"
             >
               Solicitar Orientación
             </motion.button>

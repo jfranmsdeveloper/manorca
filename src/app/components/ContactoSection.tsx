@@ -86,7 +86,7 @@ export function ContactoSection() {
   ];
 
   return (
-    <section id="contacto" className="py-28 bg-[#F8FAFC]">
+    <section id="contacto" className="py-28 bg-background transition-colors duration-300">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -95,10 +95,10 @@ export function ContactoSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-6 py-2 bg-[#0F172A]/10 border border-[#0F172A]/20 rounded-full text-[#0F172A] text-sm mb-4">
+          <span className="inline-block px-6 py-2 bg-muted rounded-full border border-border text-muted-foreground text-sm mb-4">
             Ponte en Contacto
           </span>
-          <h2 className="text-5xl lg:text-6xl font-bold text-[#0F172A] mb-6">
+          <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Contacto
           </h2>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto">
@@ -114,14 +114,14 @@ export function ContactoSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <Card className="p-8 lg:p-10 rounded-3xl border border-slate-200 shadow-2xl bg-white hover:border-[#0F172A] transition-all">
-              <h3 className="text-3xl font-bold text-[#0F172A] mb-6">
+            <Card className="p-8 lg:p-10 rounded-3xl border border-border shadow-2xl bg-card hover:border-primary transition-all">
+              <h3 className="text-3xl font-bold text-foreground mb-6">
                 Envíanos un Mensaje
               </h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Input */}
                 <div className="relative">
-                  <label htmlFor="name" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                  <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">
                     Nombre Completo
                   </label>
                   <Input
@@ -131,14 +131,14 @@ export function ContactoSection() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-xl border-slate-200 focus:border-[#0F172A] focus:ring-[#0F172A] bg-slate-50 text-slate-900"
+                    className="w-full rounded-xl border-border focus:border-primary focus:ring-primary bg-background text-foreground"
                     placeholder="Tu nombre"
                   />
                 </div>
 
                 {/* Email Input */}
                 <div className="relative">
-                  <label htmlFor="email" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
                     Correo Electrónico
                   </label>
                   <Input
@@ -148,14 +148,14 @@ export function ContactoSection() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-xl border-slate-200 focus:border-[#0F172A] focus:ring-[#0F172A] bg-slate-50 text-slate-900"
+                    className="w-full rounded-xl border-border focus:border-primary focus:ring-primary bg-background text-foreground"
                     placeholder="tu@email.com"
                   />
                 </div>
 
                 {/* Subject Input */}
                 <div className="relative">
-                  <label htmlFor="subject" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                  <label htmlFor="subject" className="block text-sm font-semibold text-foreground mb-2">
                     Asunto
                   </label>
                   <Input
@@ -165,14 +165,14 @@ export function ContactoSection() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-xl border-slate-200 focus:border-[#0F172A] focus:ring-[#0F172A] bg-slate-50 text-slate-900"
+                    className="w-full rounded-xl border-border focus:border-primary focus:ring-primary bg-background text-foreground"
                     placeholder="¿En qué podemos ayudarte?"
                   />
                 </div>
 
                 {/* Message Textarea */}
                 <div className="relative">
-                  <label htmlFor="message" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-2">
                     Mensaje
                   </label>
                   <Textarea
@@ -182,7 +182,7 @@ export function ContactoSection() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full rounded-xl border-slate-200 focus:border-[#0F172A] focus:ring-[#0F172A] bg-slate-50 text-slate-900 resize-none"
+                    className="w-full rounded-xl border-border focus:border-primary focus:ring-primary bg-background text-foreground resize-none"
                     placeholder="Escribe tu mensaje aquí..."
                   />
                 </div>
@@ -191,7 +191,7 @@ export function ContactoSection() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-[#0F172A] hover:bg-slate-800 text-white py-6 rounded-xl text-lg font-semibold shadow-xl hover:shadow-2xl transition-all group"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 rounded-xl text-lg font-semibold shadow-xl hover:shadow-2xl transition-all group"
                 >
                   {isSubmitting ? (
                     <motion.div
@@ -231,13 +231,13 @@ export function ContactoSection() {
                   whileHover={{ scale: 1.03, x: 10 }}
                   className="block"
                 >
-                  <Card className="p-6 rounded-3xl border border-slate-100 shadow-lg hover:shadow-2xl transition-all bg-white hover:border-[#0F172A]">
+                  <Card className="p-6 rounded-3xl border border-border shadow-lg hover:shadow-2xl transition-all bg-card hover:border-primary">
                     <div className="flex items-center gap-4">
                       <div className={`w-14 h-14 bg-gradient-to-br ${info.color} rounded-2xl flex items-center justify-center flex-shrink-0`}>
                         <info.icon className="w-7 h-7 text-white" />
                       </div>
                       <div>
-                        <h4 className="text-lg font-bold text-[#0F172A] mb-1">{info.title}</h4>
+                        <h4 className="text-lg font-bold text-foreground mb-1">{info.title}</h4>
                         <p className="text-slate-600">{info.value}</p>
                       </div>
                     </div>
@@ -274,8 +274,8 @@ export function ContactoSection() {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <Card className="p-8 rounded-3xl border border-slate-100 shadow-xl bg-white">
-                <h4 className="text-xl font-bold text-[#0F172A] mb-6 text-center">
+              <Card className="p-8 rounded-3xl border border-border shadow-xl bg-card">
+                <h4 className="text-xl font-bold text-foreground mb-6 text-center">
                   Síguenos en Redes
                 </h4>
                 <div className="flex flex-wrap items-center justify-center gap-4">
@@ -291,7 +291,7 @@ export function ContactoSection() {
                       transition={{ delay: 0.5 + index * 0.1 }}
                       whileHover={{ scale: 1.2, rotate: 10 }}
                       whileTap={{ scale: 0.9 }}
-                      className={`w-14 h-14 bg-slate-100 ${social.color} hover:text-white rounded-2xl flex items-center justify-center transition-all shadow-md hover:shadow-xl text-slate-600`}
+                      className={`w-14 h-14 bg-muted ${social.color} hover:text-white rounded-2xl flex items-center justify-center transition-all shadow-md hover:shadow-xl text-muted-foreground`}
                     >
                       <social.icon className="w-6 h-6" />
                     </motion.a>

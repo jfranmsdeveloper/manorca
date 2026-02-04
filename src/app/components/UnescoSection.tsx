@@ -84,7 +84,7 @@ export function UnescoSection() {
   ];
 
   return (
-    <section id="unesco" className="py-28 bg-slate-50">
+    <section id="unesco" className="py-28 bg-background transition-colors duration-300">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -93,10 +93,10 @@ export function UnescoSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-6 py-2 bg-[#0F172A]/10 border border-[#0F172A]/20 rounded-full text-[#0F172A] text-sm mb-4">
+          <span className="inline-block px-6 py-2 bg-muted rounded-full border border-border text-muted-foreground text-sm mb-4">
             Iniciativas Globales
           </span>
-          <h2 className="text-5xl lg:text-6xl font-bold text-[#0F172A] mb-6">
+          <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
             UNESCO
           </h2>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto">
@@ -112,7 +112,7 @@ export function UnescoSection() {
           transition={{ delay: 0.2 }}
           className="mb-20"
         >
-          <h3 className="text-3xl font-bold text-[#0F172A] text-center mb-10">
+          <h3 className="text-3xl font-bold text-foreground text-center mb-10">
             Objetivos de Desarrollo Sostenible
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -149,7 +149,7 @@ export function UnescoSection() {
           transition={{ delay: 0.3 }}
           className="mb-20"
         >
-          <h3 className="text-3xl font-bold text-[#0F172A] text-center mb-10">
+          <h3 className="text-3xl font-bold text-foreground text-center mb-10">
             Proyectos Activos
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -161,7 +161,7 @@ export function UnescoSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="group overflow-hidden rounded-3xl border-none shadow-xl hover:shadow-2xl transition-all">
+                <Card className="group overflow-hidden rounded-3xl border-none shadow-xl hover:shadow-2xl transition-all bg-card">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <img
                       src={project.image}
@@ -169,12 +169,12 @@ export function UnescoSection() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 to-transparent" />
-                    <Badge className="absolute top-4 right-4 bg-[#0F172A] text-white border-2 border-white/20">
+                    <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground border-2 border-primary-foreground/20">
                       {project.status}
                     </Badge>
                   </div>
                   <div className="p-6">
-                    <h4 className="text-xl font-bold text-[#0F172A] mb-3 group-hover:text-blue-600 transition-colors">
+                    <h4 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-600 transition-colors">
                       {project.title}
                     </h4>
                     <p className="text-slate-600 mb-4 leading-relaxed">
@@ -183,15 +183,15 @@ export function UnescoSection() {
                     <div className="space-y-2">
                       <div className="flex items-center justify-between text-sm">
                         <span className="text-slate-500">Progreso</span>
-                        <span className="font-semibold text-[#0F172A]">{project.progress}%</span>
+                        <span className="font-semibold text-foreground">{project.progress}%</span>
                       </div>
-                      <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                      <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: `${project.progress}%` }}
                           viewport={{ once: true }}
                           transition={{ duration: 1, delay: 0.5 }}
-                          className="h-full bg-gradient-to-r from-[#0F172A] to-blue-600 rounded-full"
+                          className="h-full bg-gradient-to-r from-primary to-blue-600 rounded-full"
                         />
                       </div>
                     </div>
@@ -209,13 +209,13 @@ export function UnescoSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          <h3 className="text-3xl font-bold text-[#0F172A] text-center mb-10">
+          <h3 className="text-3xl font-bold text-foreground text-center mb-10">
             Línea de Tiempo
           </h3>
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Timeline Line */}
-              <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#0F172A] via-blue-500 to-[#0F172A]/20 transform -translate-x-1/2" />
+              <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-blue-500 to-primary/20 transform -translate-x-1/2" />
 
               {timeline.map((item, index) => (
                 <motion.div
@@ -228,18 +228,18 @@ export function UnescoSection() {
                     }`}
                 >
                   <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                    <Card className="p-6 rounded-2xl border-none shadow-lg hover:shadow-xl transition-all bg-white">
-                      <span className="text-3xl font-bold text-[#0F172A] mb-2 block">{item.year}</span>
+                    <Card className="p-6 rounded-2xl border-none shadow-lg hover:shadow-xl transition-all bg-card">
+                      <span className="text-3xl font-bold text-foreground mb-2 block">{item.year}</span>
                       <p className="text-slate-600">{item.event}</p>
                     </Card>
                   </div>
                   <div className="w-2/12 flex justify-center relative z-10">
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center ${item.status === 'completed'
-                        ? 'bg-[#0F172A]'
+                        ? 'bg-primary'
                         : item.status === 'active'
                           ? 'bg-blue-600 animate-pulse'
-                          : 'bg-slate-300'
+                          : 'bg-muted'
                         }`}
                     >
                       {item.status === 'completed' && (
@@ -262,18 +262,18 @@ export function UnescoSection() {
           transition={{ delay: 0.6 }}
           className="mt-20 text-center"
         >
-          <Card className="max-w-4xl mx-auto p-12 rounded-3xl border-none shadow-2xl bg-[#0F172A] text-white">
+          <Card className="max-w-4xl mx-auto p-12 rounded-3xl border-none shadow-2xl bg-card text-card-foreground">
             <Globe className="w-16 h-16 mx-auto mb-6" />
             <h3 className="text-3xl font-bold mb-4">
               Únete a Nuestras Iniciativas UNESCO
             </h3>
-            <p className="text-lg mb-8 text-slate-300 max-w-2xl mx-auto">
+            <p className="text-lg mb-8 text-muted-foreground max-w-2xl mx-auto">
               Participa en proyectos que generan impacto global y contribuyen al desarrollo sostenible
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white text-[#0F172A] rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all"
+              className="px-8 py-4 bg-primary text-primary-foreground rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all"
             >
               Conoce Más
             </motion.button>

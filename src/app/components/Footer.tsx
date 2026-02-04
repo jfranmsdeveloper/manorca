@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, ArrowUp, Heart } from 'lucide-react';
+import { Mail, Phone, MapPin, Heart } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { Input } from '@/app/components/ui/input';
 const logoImage = '/logo.png';
@@ -9,9 +9,6 @@ interface FooterProps {
 }
 
 export function Footer({ onNavigate }: FooterProps) {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   const footerLinks = {
     'Explorar': [
@@ -184,18 +181,7 @@ export function Footer({ onNavigate }: FooterProps) {
         </div>
       </div>
 
-      {/* Scroll to Top Button */}
-      <motion.button
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-14 h-14 bg-[#0F172A]/80 backdrop-blur-xl border border-white/10 text-white rounded-full shadow-2xl flex items-center justify-center z-50 hover:bg-[#0F172A] hover:scale-110 transition-all hover:shadow-[0_0_20px_rgba(15,23,42,0.5)]"
-      >
-        <ArrowUp className="w-6 h-6" />
-      </motion.button>
+
     </footer>
   );
 }

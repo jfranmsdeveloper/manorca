@@ -70,7 +70,7 @@ export function AgendaSection() {
   const categories = ['Todos', 'Conferencia', 'Seminario', 'Workshop', 'Deporte', 'UNESCO'];
 
   return (
-    <section id="agenda" className="py-28 bg-[#F8FAFC]">
+    <section id="agenda" className="py-28 bg-muted/30 dark:bg-transparent transition-colors duration-300">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -82,7 +82,7 @@ export function AgendaSection() {
           <span className="inline-block px-6 py-2 bg-[#0F172A]/10 border border-[#0F172A]/20 rounded-full text-[#0F172A] text-sm mb-4">
             Próximos Eventos
           </span>
-          <h2 className="text-5xl lg:text-6xl font-bold text-[#0F172A] mb-6">
+          <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Agenda Académica
           </h2>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto">
@@ -108,8 +108,8 @@ export function AgendaSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`px-6 py-3 rounded-full transition-all ${index === 0
-                  ? 'bg-[#0F172A] text-white shadow-lg'
-                  : 'bg-white text-slate-700 hover:bg-[#0F172A] hover:text-white shadow-md border border-slate-200'
+                ? 'bg-primary text-primary-foreground shadow-lg'
+                : 'bg-card text-muted-foreground hover:bg-primary hover:text-primary-foreground shadow-md border border-border'
                 }`}
             >
               {category}
@@ -130,14 +130,14 @@ export function AgendaSection() {
             >
               {/* Timeline Line */}
               {index < events.length - 1 && (
-                <div className="absolute left-[74px] top-32 bottom-0 w-0.5 bg-gradient-to-b from-[#0F172A] to-[#0F172A]/20" />
+                <div className="absolute left-[74px] top-32 bottom-0 w-0.5 bg-gradient-to-b from-primary to-primary/20" />
               )}
 
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <Card className="flex flex-col md:flex-row gap-6 p-6 bg-white shadow-xl hover:shadow-2xl rounded-3xl border border-slate-100 overflow-hidden">
+                <Card className="flex flex-col md:flex-row gap-6 p-6 bg-card shadow-xl hover:shadow-2xl rounded-3xl border border-border overflow-hidden">
                   {/* Date Badge */}
                   <div className="flex-shrink-0">
                     <motion.div
@@ -159,7 +159,7 @@ export function AgendaSection() {
                           <Tag className="w-3 h-3 mr-1" />
                           {event.category}
                         </Badge>
-                        <h3 className="text-2xl font-bold text-[#0F172A] mb-2 hover:text-blue-700 transition-colors cursor-pointer">
+                        <h3 className="text-2xl font-bold text-foreground mb-2 hover:text-blue-700 transition-colors cursor-pointer">
                           {event.title}
                         </h3>
                         <p className="text-slate-600 leading-relaxed">
@@ -170,18 +170,18 @@ export function AgendaSection() {
 
                     <div className="flex flex-wrap gap-6 text-sm text-slate-500">
                       <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4 text-[#0F172A]" />
+                        <Clock className="w-4 h-4 text-foreground" />
                         <span>{event.time}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-[#0F172A]" />
+                        <MapPin className="w-4 h-4 text-foreground" />
                         <span>{event.location}</span>
                       </div>
                     </div>
 
                     <motion.button
                       whileHover={{ x: 5 }}
-                      className="mt-4 text-[#0F172A] hover:text-blue-700 font-semibold flex items-center gap-2 group"
+                      className="mt-4 text-foreground hover:text-blue-700 font-semibold flex items-center gap-2 group"
                     >
                       Ver detalles
                       <motion.span
@@ -210,7 +210,7 @@ export function AgendaSection() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-[#0F172A] text-white rounded-2xl shadow-xl hover:shadow-2xl hover:bg-slate-800 transition-all flex items-center gap-3 mx-auto"
+            className="px-8 py-4 bg-primary text-primary-foreground rounded-2xl shadow-xl hover:shadow-2xl hover:bg-primary/90 transition-all flex items-center gap-3 mx-auto"
           >
             <Calendar className="w-5 h-5" />
             Ver Calendario Completo
