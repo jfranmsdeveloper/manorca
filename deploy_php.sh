@@ -20,21 +20,21 @@ fi
 
 # 2. Upload
 echo "📤 Uploading files via RSYNC..."
-echo "👉 You may be asked for the server password."
+echo "👉 Using SSH Key: ~/.ssh/id_ed25519_manorca"
 
 # Sync everything including .htaccess
-rsync -avz -e "ssh -p $PORT" dist/ $USER@$HOST:$DIR
+rsync -avz -e "ssh -p $PORT -i ~/.ssh/id_ed25519_manorca" dist/ $USER@$HOST:$DIR
 
 if [ $? -eq 0 ]; then
     echo "✅ Files uploaded successfully."
 else
-    echo "❌ Upload failed."
+    echo "❌ Upload failed. Make sure you have installed the SSH key on the server."
     exit 1
 fi
 
 # 3. Clean up old Node.js
 echo "🧹 Cleaning up old Node.js artifacts..."
-ssh -p $PORT $USER@$HOST "rm $DIR/server.js 2>/dev/null; pm2 stop manorca 2>/dev/null; pm2 delete manorca 2>/dev/null"
+ssh -p $PORT -i ~/.ssh/id_ed25519_manorca $USER@$HOST "rm $DIR/server.js 2>/dev/null; pm2 stop manorca 2>/dev/null; pm2 delete manorca 2>/dev/null"
 
 
 echo "--------------------------------------------------"
