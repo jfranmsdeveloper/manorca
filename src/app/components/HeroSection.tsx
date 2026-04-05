@@ -73,7 +73,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
                 </h1>
 
                 <p className="text-xl text-slate-600 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                  Transformando la educación con visión, excelencia y un compromiso inquebrantable con el futuro.
+                  Psicopedagogo, Orientador y Coach
                 </p>
               </div>
 
@@ -135,7 +135,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 onClick={() => onNavigate(feature.section)}
-                className="group p-8 liquid-card hover:bg-white/10 dark:hover:bg-slate-800/20 text-left border-transparent hover:border-primary/20"
+                className="group p-8 liquid-card hover:bg-primary text-left border-transparent hover:border-primary/20"
               >
                 <div className="mb-6 w-12 h-12 rounded-lg bg-background flex items-center justify-center shadow-sm group-hover:bg-primary-foreground/10 transition-colors">
                   <feature.icon className="w-6 h-6 text-foreground group-hover:text-primary-foreground transition-colors" />

@@ -5,12 +5,10 @@ import { api } from '@/lib/api'; // Import API
 import { Header } from '@/app/components/Header';
 import { HeroSection } from '@/app/components/HeroSection';
 import { SmartScrollButton } from '@/app/components/SmartScrollButton';
-import { AdminControls } from '@/app/components/admin/AdminControls';
 
 // Lazy load below-the-fold components
 const SobreMiSection = lazy(() => import('@/app/components/SobreMiSection').then(module => ({ default: module.SobreMiSection })));
-const TrayectoriaSection = lazy(() => import('@/app/components/TrayectoriaSection').then(module => ({ default: module.TrayectoriaSection })));
-const AgendaSection = lazy(() => import('@/app/components/AgendaSection').then(module => ({ default: module.AgendaSection })));
+// TrayectoriaSection removed
 const PublicacionesSection = lazy(() => import('@/app/components/PublicacionesSection').then(module => ({ default: module.PublicacionesSection })));
 const UniversidadSection = lazy(() => import('@/app/components/UniversidadSection').then(module => ({ default: module.UniversidadSection })));
 const OrientacionSection = lazy(() => import('@/app/components/OrientacionSection').then(module => ({ default: module.OrientacionSection })));
@@ -36,9 +34,9 @@ export default function App() {
       const sections = [
         'inicio',
         'sobre-mi',
-        'trayectoria',
-        'agenda',
-        'publicaciones',
+        // 'trayectoria' removed
+        // 'agenda' removed
+        'articulos',
         'universidad',
         'orientacion',
         'deporte',
@@ -71,7 +69,9 @@ export default function App() {
 
     const element = document.getElementById(section);
     if (element) {
-      const offsetTop = element.offsetTop - 80; // Account for header height
+      const rect = element.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const offsetTop = rect.top + scrollTop - 80; // Account for header height
       window.scrollTo({
         top: offsetTop,
         behavior: 'smooth',
@@ -83,20 +83,42 @@ export default function App() {
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <Helmet>
         <title>Manuel Ortega Caballero | Psicopedagogo, Orientador y Coach</title>
-        <meta name="description" content="Portafolio profesional de Manuel Ortega Caballero. Psicopedagogo, Orientador y Coach. Trayectoria en educación y proyectos internacionales." />
-        <meta name="keywords" content="Manuel Ortega Caballero, Psicopedagogo, Orientador, Coach, Educación, Portafolio" />
+        <meta name="description" content="Sitio oficial de Manuel Ortega Caballero (Ortega Caballero). Psicopedagogo, Orientador y Coach. Trayectoria, publicaciones y proyectos en educación y deporte." />
+        <meta name="keywords" content="Manuel Ortega Caballero, Ortega Caballero, Manuel Ortega, Psicopedagogo, Orientador, Coach, Educación, Universidad, UNESCO, Deporte" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://manuelortegacaballero.es/" />
         <meta property="og:title" content="Manuel Ortega Caballero | Psicopedagogo, Orientador y Coach" />
-        <meta property="og:description" content="Portafolio profesional de Manuel Ortega Caballero. Psicopedagogo, Orientador y Coach. Trayectoria en educación y proyectos internacionales." />
-        <meta property="og:image" content="/og-image.jpg" />
+        <meta property="og:description" content="Sitio oficial de Manuel Ortega Caballero. Psicopedagogo, Orientador y Coach. Trayectoria, publicaciones y proyectos en educación y deporte." />
+        <meta property="og:image" content="https://manuelortegacaballero.es/og-image.jpg" />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content="Manuel Ortega Caballero | Psicopedagogo, Orientador y Coach" />
-        <meta property="twitter:description" content="Portafolio profesional de Manuel Ortega Caballero. Psicopedagogo, Orientador y Coach. Trayectoria en educación y proyectos internacionales." />
+        <meta property="twitter:description" content="Sitio oficial de Manuel Ortega Caballero. Psicopedagogo, Orientador y Coach. Trayectoria, publicaciones y proyectos en educación y deporte." />
+
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Manuel Ortega Caballero",
+              "givenName": "Manuel",
+              "familyName": "Ortega Caballero",
+              "alternateName": "Ortega Caballero",
+              "url": "https://manuelortegacaballero.es",
+              "image": "https://manuelortegacaballero.es/assets/manuel-hero.png",
+              "jobTitle": ["Psicopedagogo", "Orientador", "Coach", "Doctor en Ciencias de la Educación"],
+              "knowsAbout": ["Educación", "Psicopedagogía", "Orientación Educativa", "Coaching", "Deporte", "UNESCO"],
+              "sameAs": [
+                "https://www.linkedin.com/in/manuel-ortega-caballero",
+                "https://twitter.com/mortegacaballero"
+              ]
+            }
+          `}
+        </script>
       </Helmet>
 
       <Header activeSection={activeSection} onNavigate={handleNavigate} />
@@ -105,8 +127,6 @@ export default function App() {
         <HeroSection onNavigate={handleNavigate} />
         <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
           <SobreMiSection />
-          <TrayectoriaSection />
-          <AgendaSection />
 
           <PublicacionesSection />
           <UniversidadSection />
@@ -121,7 +141,6 @@ export default function App() {
       <Suspense fallback={null}>
         <Footer onNavigate={handleNavigate} />
         <SmartScrollButton />
-        <AdminControls />
       </Suspense>
     </div>
   );

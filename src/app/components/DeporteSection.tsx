@@ -175,8 +175,8 @@ export function DeporteSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
             >
-              <Card className="group overflow-hidden rounded-3xl border-none shadow-xl hover:shadow-2xl transition-all cursor-pointer">
-                <div className="relative aspect-[4/3] overflow-hidden">
+              <Card className="group overflow-hidden rounded-3xl border-none shadow-xl hover:shadow-2xl transition-all cursor-pointer h-full flex flex-col">
+                <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -187,14 +187,14 @@ export function DeporteSection() {
                     {item.category}
                   </Badge>
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors line-clamp-2">
                       {item.title}
                     </h3>
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-grow">
                   <p className="text-sm text-slate-500 mb-3">{item.date}</p>
-                  <p className="text-foreground leading-relaxed">{item.excerpt}</p>
+                  <p className="text-foreground leading-relaxed line-clamp-3 flex-grow">{item.excerpt}</p>
                   <motion.button
                     whileHover={{ x: 5 }}
                     className="mt-4 text-foreground hover:text-blue-700 font-semibold flex items-center gap-2"

@@ -1,6 +1,6 @@
 import ReactGA from "react-ga4";
 
-const GA_MEASUREMENT_ID = "G-XXXXXXXXXX"; // Placeholder: User needs to replace this
+const GA_MEASUREMENT_ID = "G-TZW3B72ZN8";
 
 export const initGA = () => {
     if (process.env.NODE_ENV === "production") {

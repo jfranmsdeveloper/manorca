@@ -125,7 +125,7 @@ export function UnescoSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
               >
-                <Card className={`p-6 rounded-3xl border-none shadow-lg hover:shadow-2xl transition-all bg-gradient-to-br ${goal.color} text-white overflow-hidden relative group cursor-pointer`}>
+                <Card className={`p-6 rounded-3xl border-none shadow-lg hover:shadow-2xl transition-all bg-gradient-to-br ${goal.color} text-white overflow-hidden relative group cursor-pointer h-full flex flex-col justify-between`}>
                   <div className="absolute inset-0 bg-white/5 backdrop-blur-sm" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative z-10">
@@ -133,7 +133,7 @@ export function UnescoSection() {
                       <goal.icon className="w-7 h-7 text-white" />
                     </div>
                     <h4 className="text-xl font-bold mb-2">{goal.title}</h4>
-                    <p className="text-sm text-white/90 leading-relaxed">{goal.description}</p>
+                    <p className="text-sm text-white/90 leading-relaxed line-clamp-3">{goal.description}</p>
                   </div>
                 </Card>
               </motion.div>
@@ -161,8 +161,8 @@ export function UnescoSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="group overflow-hidden rounded-3xl border-none shadow-xl hover:shadow-2xl transition-all bg-card">
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                <Card className="group overflow-hidden rounded-3xl border-none shadow-xl hover:shadow-2xl transition-all bg-card h-full flex flex-col">
+                  <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
                     <img
                       src={project.image}
                       alt={project.title}
@@ -173,11 +173,11 @@ export function UnescoSection() {
                       {project.status}
                     </Badge>
                   </div>
-                  <div className="p-6">
-                    <h4 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-600 transition-colors">
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h4 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
                       {project.title}
                     </h4>
-                    <p className="text-slate-600 mb-4 leading-relaxed">
+                    <p className="text-slate-600 mb-4 leading-relaxed line-clamp-3 flex-grow">
                       {project.description}
                     </p>
                     <div className="space-y-2">

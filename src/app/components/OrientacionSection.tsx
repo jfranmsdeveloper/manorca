@@ -115,7 +115,7 @@ export function OrientacionSection() {
                 >
                   <AccordionTrigger className="px-8 py-6 hover:no-underline hover:bg-muted transition-colors">
                     <div className="flex items-center gap-4 text-left">
-                      <div className={`w - 14 h - 14 bg - gradient - to - br ${topic.color} rounded - 2xl flex items - center justify - center flex - shrink - 0`}>
+                      <div className={`w-14 h-14 bg-gradient-to-br ${topic.color} rounded-2xl flex items-center justify-center flex-shrink-0`}>
                         <topic.icon className="w-7 h-7 text-white" />
                       </div>
                       <div className="flex-1">
@@ -171,16 +171,18 @@ export function OrientacionSection() {
                 transition={{ delay: 0.5 + index * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <Card className="p-6 rounded-3xl border border-border shadow-lg hover:shadow-2xl transition-all bg-card hover:border-primary">
-                  <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
-                    <Compass className="w-6 h-6 text-white" />
+                <Card className="p-6 rounded-3xl border border-border shadow-lg hover:shadow-2xl transition-all bg-card hover:border-primary h-full flex flex-col justify-between">
+                  <div>
+                    <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
+                      <Compass className="w-6 h-6 text-white" />
+                    </div>
+                    <Badge className="bg-muted text-foreground border-none mb-3">
+                      {resource.category}
+                    </Badge>
+                    <h4 className="text-lg font-bold text-foreground mb-2 line-clamp-2">
+                      {resource.title}
+                    </h4>
                   </div>
-                  <Badge className="bg-muted text-foreground border-none mb-3">
-                    {resource.category}
-                  </Badge>
-                  <h4 className="text-lg font-bold text-foreground mb-2">
-                    {resource.title}
-                  </h4>
                   <p className="text-sm text-slate-500">
                     {resource.views.toLocaleString()} vistas
                   </p>

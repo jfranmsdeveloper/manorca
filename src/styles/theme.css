@@ -248,6 +248,28 @@
 /* --- VisionOS Liquid Glass System --- */
 
 @layer components {
+  .nav-glass-pill {
+    @apply absolute inset-0 rounded-xl backdrop-blur-md transition-all duration-300;
+    /* Light mode: Obsidian/Dark Glass - Premium Navy */
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.85) 100%);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    box-shadow:
+      0 4px 12px rgba(15, 23, 42, 0.15),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+    z-index: 0;
+  }
+
+  .dark .nav-glass-pill {
+    /* Dark mode: White Glass for contrast against dark background */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.05);
+  }
+
   .liquid-glass {
     @apply relative overflow-hidden backdrop-blur-3xl;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));

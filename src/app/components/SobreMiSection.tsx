@@ -6,10 +6,10 @@ import { Users, Target, Heart, Lightbulb } from 'lucide-react';
 import { TimelineSection } from './TimelineSection';
 import { EditableImage } from '@/app/components/admin/EditableImage';
 
-// Helper image imports (from Unsplash or assets)
-const manuelImage3 = 'https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
-const manuelImage4 = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
-const manuelImage5 = 'https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
+// Helper image imports (from assets)
+const manuelImage3 = '/assets/sobre-mi-1.webp';
+const manuelImage4 = '/assets/sobre-mi-2.webp';
+const manuelImage5 = '/assets/sobre-mi-3.webp';
 
 export function SobreMiSection() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -246,10 +246,12 @@ export function SobreMiSection() {
 
         {/* Achievements Timeline - Now using Timeline Component */}
         <motion.div
+          id="trayectoria"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+
         >
           <h3 className="text-4xl font-bold text-foreground text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80 dark:text-gray-100">
             Trayectoria y Logros

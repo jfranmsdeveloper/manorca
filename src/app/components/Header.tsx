@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, BookOpen } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { useNavigate } from 'react-router-dom';
-import { ModeToggle } from './mode-toggle';
+
 
 const logoImage = '/logo.png';
 
@@ -15,6 +15,7 @@ interface HeaderProps {
 export function Header({ activeSection, onNavigate }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,11 +29,11 @@ export function Header({ activeSection, onNavigate }: HeaderProps) {
   const navItems = [
     { id: 'inicio', label: 'Inicio' },
     { id: 'sobre-mi', label: 'Perfil' },
-    { id: 'publicaciones', label: 'Publicaciones' },
-    { id: 'unesco', label: 'UNESCO' },
-    { id: 'lecturas', label: 'Librería', path: '/books' },
+    { id: 'articulos', label: 'Artículos' },
     { id: 'universidad', label: 'Universidad' },
+    { id: 'orientacion', label: 'Orientación' },
     { id: 'deporte', label: 'Deporte' },
+    { id: 'unesco', label: 'UNESCO' },
     { id: 'eventos', label: 'Eventos' },
     { id: 'contacto', label: 'Contacto' },
   ];
@@ -90,33 +91,54 @@ export function Header({ activeSection, onNavigate }: HeaderProps) {
               </motion.button>
 
               {/* Desktop Navigation */}
-              <div className="hidden xl:flex items-center gap-1">
-                {navItems.map((item) => (
-                  <motion.button
-                    key={item.id}
-                    onClick={() => handleNavClick(item)}
-                    className={`glass-hover relative px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm ${activeSection === item.id
-                      ? 'text-white dark:text-slate-950'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
-                      }`}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {/* Active indicator */}
-                    {activeSection === item.id && (
-                      <motion.div
-                        layoutId="activeSection"
-                        className="absolute inset-0 bg-slate-900 dark:bg-white rounded-xl shadow-md"
-                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                      />
-                    )}
-                    <span className="relative z-10">{item.label}</span>
-                  </motion.button>
-                ))}
-              </div>
+              {/* Desktop Navigation */}
+              <div className="hidden xl:flex items-center gap-6">
+                <div className="flex items-center gap-1" onMouseLeave={() => setHoveredItem(null)}>
+                  {navItems.map((item) => {
+                    const isActive = activeSection === item.id;
+                    const isHovered = hoveredItem === item.id;
+                    const showGlass = isHovered || (isActive && hoveredItem === null);
 
-              <div className="flex items-center gap-2">
-                <ModeToggle />
+                    return (
+                      <motion.button
+                        key={item.id}
+                        onClick={() => handleNavClick(item)}
+                        onMouseEnter={() => setHoveredItem(item.id)}
+                        className={`relative px-4 py-2 rounded-xl font-medium transition-colors duration-300 text-sm ${isActive || isHovered
+                          ? 'text-white dark:text-slate-950'
+                          : 'text-slate-600 dark:text-slate-400'
+                          }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {showGlass && (
+                          <motion.div
+                            layoutId="nav-pill"
+                            className="nav-glass-pill"
+                            initial={false}
+                            transition={{
+                              type: 'spring',
+                              stiffness: 300,
+                              damping: 30
+                            }}
+                          />
+                        )}
+                        <span className="relative z-10 drop-shadow-sm">{item.label}</span>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+
+                {/* Librería CTA */}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate('/books')}
+                  className="nav-glass-pill relative !static px-6 py-2 flex items-center gap-2 group overflow-hidden"
+                >
+                  <BookOpen className="w-4 h-4 text-white dark:text-slate-900" />
+                  <span className="font-semibold text-white dark:text-slate-950">Librería</span>
+                </motion.button>
               </div>
 
               {/* Mobile Menu Button */}

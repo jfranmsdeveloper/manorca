@@ -46,7 +46,7 @@ import { HelmetProvider } from 'react-helmet-async';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>
-      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="vite-ui-theme">
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} storageKey="vite-ui-theme">
         <AuthProvider>
           <BrowserRouter>
             <Routes>

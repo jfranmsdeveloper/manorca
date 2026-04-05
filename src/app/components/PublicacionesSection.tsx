@@ -141,7 +141,7 @@ export function PublicacionesSection() {
   });
 
   return (
-    <section id="publicaciones" className="py-20 lg:py-32 bg-muted/30 dark:bg-transparent relative overflow-hidden transition-colors duration-300">
+    <section id="articulos" className="py-20 lg:py-32 bg-muted/30 dark:bg-transparent relative overflow-hidden transition-colors duration-300">
       {/* Subtle Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-20 right-20 w-96 h-96 bg-blue-100 rounded-full blur-3xl" />
@@ -168,7 +168,7 @@ export function PublicacionesSection() {
             </div>
           </motion.div>
           <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            Publicaciones & Artículos
+            Artículos
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Investigaciones, artículos y reflexiones de Manuel Ortega Caballero sobre educación, deporte y desarrollo profesional
@@ -280,7 +280,7 @@ export function PublicacionesSection() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-600 transition-colors leading-tight">
+                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-600 transition-colors leading-tight line-clamp-2">
                       {pub.title}
                     </h3>
 
@@ -290,7 +290,7 @@ export function PublicacionesSection() {
                     </p>
 
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-2 mb-4 h-16 overflow-hidden content-start">
                       {pub.tags.map((tag: string) => (
                         <Badge
                           key={tag}
